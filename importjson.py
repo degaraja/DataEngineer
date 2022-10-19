@@ -13,7 +13,7 @@ database='DataEngineer'
 user='dgaluh'
 password='Loader2024'
 host='10.246.128.137'
-port='4022'
+port=''
 table_name='datafromjson'
 
 with open(schema_json, 'r') as schema:
