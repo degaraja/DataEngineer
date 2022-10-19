@@ -6,14 +6,15 @@ from zipimport import zipfile
 import pandas as pd
 from sqlalchemy import create_engine
 
-schema_json = '/schemas/table.json'
-zip_small_file='/path/dataset=small.zip'
-database=''
-user=''
-password=''
-host=''
-port=''
-table_name=''
+schema_json = 'C:\\Users\\dgaluh\\Project\\Python\\Json\\table.json'
+zip_small_file='C:\\Users\\dgaluh\\Project\\Python\\Json\\dataset=small.zip'
+small_file_name= 'datacoba.csv'
+database='DataEngineer'
+user='dgaluh'
+password='Loader2024'
+host='10.246.128.137'
+port='4022'
+table_name='datafromjson'
 
 with open(schema_json, 'r') as schema:
     content = json.loads(schema.read())
@@ -35,7 +36,7 @@ for d in list_schema:
 
 print(list_schema2)
 
-create_schema_sql = """create table if not exist xxx {};"""
+create_schema_sql = """create table if not exist datafromjson {};"""
 create_schema_sql_final = create_schema_sql.format(tuple(list_schema2)).replace("'","")
 
 print(create_schema_sql_final)
@@ -67,5 +68,3 @@ df_filtered.to_sql(table_name, engine, if_exist='replace', index=False)
 print(f'Total inserted rows:{len(df_filtered)}')
 print(f'created at :{df_filtered.created_at.min()}')
 print(f'created at :{df_filtered.created_at.max()}')
-
-result_ingestion_check = cursor.execute
